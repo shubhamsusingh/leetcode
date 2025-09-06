@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ArrayQuestion {
-    // Q1. Remove duplicates Element From Array
+    // Q1. Remove duplicates Element From Sorted Array
     public int removeDuplicates(int[] nums) {
         int k = 1;
         for (int i = 1; i < nums.length; i++) {
