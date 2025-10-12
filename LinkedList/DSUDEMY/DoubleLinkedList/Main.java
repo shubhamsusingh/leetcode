@@ -11,5 +11,7 @@ public class Main {
         list1.printList();
         list1.insertAt(2, 6);
         list1.printList();
+        list1.set(2, 12);
+        list1.printList();
     }
 }
