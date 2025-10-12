@@ -42,13 +42,13 @@ public class LinkedList {
     }
 
     public boolean insertAt(int index, int data) {
-        if (index < 0 || index >= length) {
+        if (index < 0 || index > length) {
             return false;
         }
         if (index == 0) {
             preAppend(data);
             return true;
-        } else if (index == length - 1) {
+        } else if (index == length) {
             append(data);
             return true;
         } else {
@@ -59,8 +59,8 @@ public class LinkedList {
             }
             newNode.next = temp.next;
             newNode.prev = temp;
-            temp.next = newNode;
             temp.next.prev = newNode;
+            temp.next = newNode;
             length++;
             return true;
 
@@ -103,7 +103,7 @@ public class LinkedList {
     }
 
     public Node removeAt(int index) {
-        if (index < 0 || index > length - 1) {
+        if (index < 0 || index >= length) {
             return null;
         }
         if (index == 0) {
@@ -138,7 +138,7 @@ public class LinkedList {
     }
 
     public Node get(int index) {
-        if (index < 0 || index > length - 1) {
+        if (index < 0 || index >= length) {
             return null;
         }
         if (index == 0) {
@@ -149,16 +149,25 @@ public class LinkedList {
         Node temp;
         if (index < length / 2) {
             temp = head;
-            for (int i = 0; i <= index; i++) {
+            for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
             return temp;
         } else {
             temp = tail;
-            for (int i = length - 1; i > index; i++) {
-                temp = temp.next;
+            for (int i = length - 1; i > index; i--) {
+                temp = temp.prev;
             }
             return temp;
         }
+    }
+
+    public boolean set(int index, int data) {
+        Node temp = get(index);
+        if (temp == null) {
+            return false;
+        }
+        temp.data = data;
+        return true;
     }
 }
